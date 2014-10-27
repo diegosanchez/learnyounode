@@ -3,7 +3,7 @@
 var http    = require("http");
 var buffer  = require("bl");
 
-var auth = 'Basic ' + new Buffer("diesanch:a42b1tm4").toString('base64');
+var auth = 'Basic ' + new Buffer(process.env.PROXY_USER + ":" + process.env.PROXY_PASS).toString('base64');
 var options = {
     host: 'proxy.nextel.com.ar',
     port: 8080,
