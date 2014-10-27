@@ -9,9 +9,9 @@ var server = http.createServer( function( rsq, rsp ) {
   if ( rsq.method != "POST" )
     return;
 
-
-  transform._transform = function(data) {
-    this.push( data.toString().toUpperCase() );
+  transform._transform = function(chunk, encoding, done) {
+    this.push( chunk.toString().toUpperCase() );
+    done();
   }
 
   rsq.pipe( transform ).pipe( rsp );
